@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-course-card',
@@ -16,5 +16,12 @@ export class CourseCard {
     code: string;
     credits: number;
   };
+
+  @Output()
+  enrollRequested = new EventEmitter<number>();
+
+  enroll() {
+    this.enrollRequested.emit(this.course.id);
+  }
 
 }
